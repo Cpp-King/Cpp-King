@@ -6,7 +6,7 @@ Here are our programs(some have not uploaded yet):
 |        | ToolsOS | PhrigOS | LinOS | VS2 | Life Simulator | Minecraft Forever |
 | :----: | :-----: | :-----: | :---: | :-: | :------------: | :---------------: |
 | Author | me | me | Linlin1195 | me | me | me |
-| Source | open | open | close | open | close | open |
+| Source | open | open | close | open | open | open |
 | License | gpl-v2 | gpl-v2 | gpl-v2 | gpl-v2 | gpl-v2 | gpl-v2 |
 
 PS: *Minecraft Forever* will not upload in a short while.
