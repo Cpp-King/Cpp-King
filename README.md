@@ -7,7 +7,7 @@ Here are our programs(some have not uploaded yet):
 | :----: | :-----: | :-----: | :---: | :-: | :------------: | :---------------: |
 | Author | me | me | Linlin1195 | me | me | me |
 | Source | open | open | close | open | close | open |
-| Lisense | gpl-v2 | gpl-v2 | gpl-v2 | gpl-v2 | gpl-v2 | gpl-v2 |
+| License | gpl-v2 | gpl-v2 | gpl-v2 | gpl-v2 | gpl-v2 | gpl-v2 |
 
 PS: *Minecraft Forever* will not upload in a short while.
 
