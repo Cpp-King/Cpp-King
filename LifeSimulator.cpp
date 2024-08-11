@@ -1,3 +1,21 @@
+/*
+	LifeSimulator
+    Copyright (C) 2024  Cpp-King
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
 #include<iostream>
 #include<cstdio>
 #include<cstring>
@@ -85,10 +103,64 @@ int main(){
 	if(buf=="ttcandy") bdt=1;
     while(1){
         system("cls");
-        cout<<"Day "<<day<<" "<<hour<<":"<<minute<<", HP "<<hp<<"/"<<maxhp<<", Hungry "<<hungry<<"/"<<maxhungry<<", $"<<money<<".\nWhat will you do now?\n1.Move 2.Talk 3.Bag 4.State 5.Options\n";
+        cout<<"Day "<<day<<" "<<hour<<":"<<minute<<", HP "<<hp<<"/"<<maxhp<<", Hungry "<<hungry<<"/"<<maxhungry<<", $"<<money<<".\nWhat will you do now?\n1.Move 2.Talk 3.State 4.Exit\n";
         int op;
         cin>>op;
-        if(op==1){
+        if(op==4) exit(0);
+        else if(op==3){
+        	system("cls");
+        	cout<<"HP "<<hp<<"/"<<maxhp<<", Hungry "<<hungry<<"/"<<maxhungry<<", $"<<money<<", Inteligence "<<inte;
+        	Sleep(5000);
+		}else if(op==2){
+        	int p=rand()%500+1;
+        	system("cls");
+        	cout<<"Day "<<day<<" "<<hour<<":"<<minute<<", HP "<<hp<<"/"<<maxhp<<", Hungry "<<hungry<<"/"<<maxhungry<<", $"<<money<<".\n";
+        	if(p>=1&&p<=299){
+        		cout<<"Naoko: こんにちは��";
+        		Sleep(2000);
+			}else if(p>=100&&p<=497){
+				cout<<"Wassily: Don't get in the way! I'll hit you!";
+        		Sleep(3000);
+			}else if(p==498){
+				cout<<"Cao Yuan: I have won the gold medal and come back!";
+        		Sleep(4000);
+        		system("cls");
+        		cout<<"MISSON WIN!\nTalk to Cao Yuan and get his autograph.";
+        		Sleep(4000);
+			}else if(p==499){
+				cout<<"Officer: Have you seen a man in black?";
+				minute+=10;
+        		Sleep(3000);
+        		system("cls");
+        		cout<<"MISSON WIN!\nHelp the officer to catch the bad man.";
+        		Sleep(4000);
+			}else if(p==500){
+				cout<<"Madam: Oh! My phone has been stolen!!!";
+        		Sleep(3000);
+				system("cls");
+        		cout<<"MISSON START!\nFind her phone";
+        		Sleep(3000);
+				system("cls");
+				cout<"Please enter the Author's team name(Full name without space): ";
+				string ddd;
+				cin>>ddd;
+				if(ddd=="BintreeDevelopmentTeam"){
+					system("cls");
+	        		cout<<"MISSON WIN!\nFind her phone";
+	        		money+=100;
+	        		Sleep(2000);
+				}else{
+					system("cls");
+	        		cout<<"MISSON FAIL!\nFind her phone";
+	        		Sleep(2000);
+				}
+				minute+=10;
+			}else{
+				cout<<"No ones are here.";
+				Sleep(2000);
+			}
+			minute+=1;
+		}else if(op==1){
             system("cls");
             cout<<"Day "<<day<<" "<<hour<<":"<<minute<<", HP "<<hp<<"/"<<maxhp<<", Hungry "<<hungry<<"/"<<maxhungry<<", $"<<money<<".\nWhere will you move?\n1.School 2.BDT 3.Walking Street 4.Qingbang 5.Shop 6.Restaurant 7.Police 8.Home 9.Cancel\n";
             int move;
@@ -501,7 +573,7 @@ int main(){
 				hp=maxhp;
 				hungry=maxhungry;
 			}
-        }
+        }else continue;
         if(minute>=60){
             hour++;
             minute-=60;
@@ -509,7 +581,13 @@ int main(){
                 day++;
                 hour-=24;
             }
-        }
+        }if(hungry<=0||hp<0){
+        	system("cls");
+        	cout<<"Day "<<day<<" "<<hour<<":"<<minute<<", $"<<money<<".\n";
+        	cout<<buf<<" died.\nGAME OVER!";
+        	Sleep(3000);
+        	exit(0);
+		} 
     }
     return 0;
 }

@@ -1,3 +1,21 @@
+/*
+	ToolsOS
+    Copyright (C) 2024  Cpp-King
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License along
+    with this program; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
 #include<iostream>
 #include<cstdio>
 #include<cmath>
@@ -88,15 +106,50 @@ double calculate(string str)
 int main(){
 	cout<<"(C)版权所有ttcandy2024保留所有权利。\n";
 	Sleep(3000);
+	cout<<"正在进入\n";
+	Sleep(500);
+	cout<<"请输入用户名，无论以前是否注册\n";
+	string name;
+	inn:;
+	getline(cin,name);
+	for(int i=0;i<name.size();i++){
+		if(name[i]==' '||name[i]=='\\'||name[i]=='@'||name[i]=='.'||name[i]==','){
+			cout<<"用户名不能包含以下字符：\\@.,和空格。\n";
+			goto inn;
+		}
+	}
+	bool admin=false;
+	if(name=="ttcandy") admin=true;
 	delay_print("欢迎使用ToolsOS！\n输入help查看所有命令\n");
 	while(true){
+		start:;
 		cout<<">>> ";
 		string cmd;
 		getline(cin, cmd);
 		if(cmd=="exit") exit(0);
-		else if(cmd=="help"){
+		else if(cmd=="__def"){
+			cout<<">>> ";
+			string d1;
+			cin>>d1;
+			if(d1=="admin-ttcandy-LIMIT") admin=true;
+			else cout<<"无效的管理权限激活码。\n";
+		}else if(cmd=="color"){
+			if(!admin){
+				cout<<"你没有执行此命令的权限。\n";
+				continue;
+			}
+			cout<<">>> ";
+			string co;
+			cin>>co;
+			if(co=="green") system("color 02");
+			else if(co=="blue") system("color 03");
+			else if(co=="white") system("color 07");
+			else cout<<"无意义的输入。\n";
+			goto start;
+		}else if(cmd=="help"){
 			cout<<"命令列表\n";
 			delay_print("calculator换行后输入后缀表达式并计算 用单个空格分隔\n");
+			delay_print("color改变控制台颜色。没有管理权限无法使用。\n");
 			delay_print("clear清空控制台\n");
 			delay_print("help查看所有命令及用法\n");
 			delay_print("timer空格后输入单位和时间 用空格分隔\n");
@@ -120,6 +173,9 @@ int main(){
 				}else if(cmd2=="clear"){
 					delay_print("命令信息\n");
 					delay_print("清空控制台。不需要输入除clear以外的字符。\n");
+				}else if(cmd2=="color"){
+					delay_print("命令信息\n");
+					delay_print("color换行后输入颜色(green,blue,white)。\n");
 				}else if(cmd2=="exit"){
 					delay_print("命令信息\n");
 					delay_print("退出程序。不需要输入除exit以外的字符。\n");
@@ -174,7 +230,6 @@ int main(){
 			cout<<"\n计时结束！\n";
 		}
 		else cout<<"\""<<cmd<<"\"不是一个命令。输入help查看命令列表。\n";
-		
 	}
 	return 0;
 }
