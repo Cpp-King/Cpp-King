@@ -1,5 +1,5 @@
 Hi, I'm Cpp_King.  
-I have a development team: *Bintree Development Team*, and we have written some programs.
+I have a development team: $ \textup{\textbf Bintree Development Team} $, and we have written some programs.
 
 Here are our programs(some have not uploaded yet):
 
